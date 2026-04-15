@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flujo Skool Académico y Seguimiento Optimizado</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding: 40px 20px; margin: 0; }
+        .diagram-container { background-color: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); max-width: 1300px; width: 100%; overflow-x: auto; }
+        h1 { text-align: center; color: #333; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="diagram-container">
+        <h1>Diagrama de Flujo: Proceso Académico y Seguimiento (4 Contactos)</h1>
+        
+        <div class="mermaid">
+            graph TD
+                %% Definición de Nodos Iniciales (Flujo Intacto)
+                Start([FLUJO SKOOL ACADÉMICO]):::orangeOval
+                Step1[Alumno paga el monto en Skool y manda screenshot de su pago al área comercial]:::yellowRect
+                Step2["Alumno llena las 3 preguntas que solicitamos:<br>• Si trabaja en minera y cargo<br>• Correo<br>• Teléfono"]:::yellowRect
+                Step3["Área Comercial registra datos del alumno en Google Sheets:<br>• Paquete<br>• Nombres Completos<br>• Correo<br>• DNI<br>• Teléfono"]:::yellowRect
+                Step4[Make detecta nuevo registro]:::yellowRect
+
+                %% Secuencia Inicial
+                Start --> Step1 --> Step2 --> Step3 --> Step4 --> Dec1
+
+                %% Primera Decisión
+                Dec1{"¿Qué paquete adquirió?"}:::pinkDiamond
+                Dec1 --> BranchE1[Estándar]:::blueRect
+                Dec1 --> BranchP1[Premium]:::blueRect
+                Dec1 --> BranchV1[VIP]:::blueRect
+
+                BranchE1 --> MakeE[Make envía HTML Estándar]:::yellowRect
+                BranchP1 --> MakeP[Make envía HTML Premium]:::yellowRect
+                BranchV1 --> MakeV[Make envía HTML VIP]:::yellowRect
+
+                %% Convergencia y Segunda Decisión
+                MakeE --> Dec2
+                MakeP --> Dec2
+                MakeV --> Dec2
+
+                Dec2{"¿FALLÓ MAKE?"}:::greenDiamond
+                Dec2 -->|No| NodeNo[No]:::orangeRect
+                Dec2 -->|Si| NodeSi[Si]:::greenRect
+
+                NodeNo --> RecibeCorreo[Área Académica envía HTML en su correo]:::yellowRect
+                NodeSi --> Manual[Área Académica envía HTML manualmente]:::yellowRect
+                Manual --> RecibeCorreo
+
+                %% Tercera Decisión
+                RecibeCorreo --> Dec3{"¿Qué paquete adquirió?"}:::pinkDiamond
+                Dec3 --> BranchE2[Estándar]:::blueRect
+                Dec3 --> BranchP2[Premium]:::blueRect
+                Dec3 --> BranchV2[VIP]:::blueRect
+
+                BranchE2 --> FormE[Alumno llena formulario y elige 1 zona]:::yellowRect
+                BranchP2 --> FormP[Alumno llena formulario y elige 3 zonas]:::yellowRect
+                BranchV2 --> FormV[Alumno llena formulario y elige todas las zonas]:::yellowRect
+
+                %% Convergencia Final Académica
+                FormE --> Zapier[Zapier matricula en los cursos que eligió]:::yellowRect
+                FormP --> Zapier
+                FormV --> Zapier
+                Zapier --> Confirm[Alumno recibe correo de confirmación de matrícula]:::yellowRect
+                
+                Confirm --> Segui[INICIA BIENESTAR ESTUDIANTIL]:::orangeOval
+
+                %% ==========================================
+                %% NUEVA FASE DE SEGUIMIENTO (4 CONTACTOS)
+                %% ==========================================
+                
+                %% CONTACTO 1: DÍA 1
+                subgraph Hito1 [Hito 1: Onboarding]
+                    Segui --> DecD1{"¿Contesta Llamada? Día 1"}:::pinkDiamond
+                    DecD1 -->|Sí| ScriptD1["Bienvenida: Validar acceso, Módulo 1 y comunidad"]:::blueRect
+                    DecD1 -->|No, 3 intentos| WAD1[Dejar mensaje por WhatsApp]:::orangeRect
+                    ScriptD1 --> SheetD1[Registrar en Macro Sheets 'seguimiento']:::yellowRect
+                    WAD1 --> SheetD1
+                end
+
+                %% CONTACTO 2: DÍA 7
+                subgraph Hito2 [Hito 2: Ritmo]
+                    SheetD1 --> DecD7{"¿Contesta Llamada? Día 7"}:::pinkDiamond
+                    DecD7 -->|Sí| ScriptD7["Validar avances semana 1 y mantener continuidad"]:::blueRect
+                    DecD7 -->|No, 3 intentos| WAD7[Dejar mensaje por WhatsApp]:::orangeRect
+                    ScriptD7 --> SheetD7[Registrar en Macro Sheets 'seguimiento']:::yellowRect
+                    WAD7 --> SheetD7
+                end
+
+                %% CONTACTO 3: DÍA 15
+                subgraph Hito3 [Hito 3: El Gancho y Novedad]
+                    SheetD7 --> CheckSkool[Revisar progreso en Skool]:::yellowRect
+                    CheckSkool --> DecD15{"¿Contesta Llamada? Día 15"}:::pinkDiamond
+                    DecD15 -->|Sí| ScriptD15["Mitad de mes: Sembrar curiosidad sobre novedades exclusivas"]:::blueRect
+                    DecD15 -->|No, 3 intentos| WAD15[Dejar mensaje por WhatsApp]:::orangeRect
+                    ScriptD15 --> SheetD15[Registrar en Macro Sheets 'seguimiento']:::yellowRect
+                    WAD15 --> SheetD15
+                end
+
+                %% CONTACTO 4: DÍA 28
+                subgraph Hito4 [Hito 4: Cierre y Renovación]
+                    SheetD15 --> DecD28{"¿Contesta Llamada? Día 28"}:::pinkDiamond
+                    DecD28 -->|Sí| ScriptD28["Cierre: Confirmar novedades y confirmar la renovación"]:::blueRect
+                    DecD28 -->|No, 3 intentos| WAD28[Enviar WhatsApp con novedades y confirmación de renovación]:::orangeRect
+                    ScriptD28 --> SheetD28[Registrar en Macro Sheets 'seguimiento']:::yellowRect
+                    WAD28 --> SheetD28
+                end
+
+                %% FIN
+                SheetD28 --> End([FIN CICLO / INICIO MES 2]):::orangeOval
+
+                %% Estilos y Colores
+                classDef orangeOval fill:#f58a42,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+                classDef yellowRect fill:#f9d56e,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+                classDef pinkDiamond fill:#f4c2f7,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+                classDef blueRect fill:#35b5d6,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+                classDef greenDiamond fill:#2d9e68,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+                classDef orangeRect fill:#f58a42,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+                classDef greenRect fill:#36b578,stroke:#000,stroke-width:1px,color:#000,font-weight:bold;
+        </div>
+    </div>
+
+</body>
+</html>
