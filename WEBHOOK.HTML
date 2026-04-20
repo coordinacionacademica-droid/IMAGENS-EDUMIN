@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUMIN - Automatización Dinámica</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #03060a;
+            --neon-blue: #00f2ff;
+            --neon-green: #00ff88;
+            --neon-purple: #b000ff;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 242, 255, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 136, 0.05), transparent 25%);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Cabecera animada */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            color: var(--neon-blue);
+            font-size: 14pt;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        h1 {
+            font-size: 36pt;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #fff, #a1c4fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* SVG del Flujo Animado */
+        .flow-container {
+            background: rgba(10, 15, 25, 0.6);
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            border-radius: 24px;
+            padding: 40px 20px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 242, 255, 0.05);
+            animation: scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Animaciones SVG */
+        .data-line {
+            stroke-dasharray: 8, 8;
+            animation: flowData 1.5s linear infinite;
+        }
+        
+        @keyframes flowData {
+            to { stroke-dashoffset: -16; }
+        }
+
+        .node-circle {
+            transition: all 0.3s ease;
+        }
+
+        .node-circle:hover {
+            r: 38;
+            filter: brightness(1.3);
+        }
+
+        .pulse-mailhook { animation: pulseShadow 2s infinite alternate; --glow-color: var(--neon-purple); }
+        .pulse-sheets { animation: pulseShadow 2s infinite alternate 0.6s; --glow-color: var(--neon-green); }
+        .pulse-telegram { animation: pulseShadow 2s infinite alternate 1.2s; --glow-color: var(--neon-blue); }
+
+        @keyframes pulseShadow {
+            0% { filter: drop-shadow(0 0 5px var(--glow-color)); }
+            100% { filter: drop-shadow(0 0 25px var(--glow-color)); }
+        }
+
+        /* Grid de Tarjetas */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .step-card {
+            background: linear-gradient(145deg, rgba(20, 25, 35, 0.8), rgba(10, 12, 18, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px 25px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Efecto Hover en Tarjetas */
+        .step-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0, 242, 255, 0.4);
+            box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15);
+        }
+
+        /* Brillo superior en tarjetas */
+        .step-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--card-color), transparent);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .step-card:hover::before { opacity: 1; }
+
+        /* Colores específicos de tarjetas */
+        .card-1 { --card-color: var(--neon-purple); animation: slideUp 0.6s ease forwards 0.2s; }
+        .card-2 { --card-color: #f39c12; animation: slideUp 0.6s ease forwards 0.4s; }
+        .card-3 { --card-color: var(--neon-green); animation: slideUp 0.6s ease forwards 0.6s; }
+        .card-4 { --card-color: var(--neon-blue); animation: slideUp 0.6s ease forwards 0.8s; }
+
+        .step-num {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--card-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 9pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .step-title {
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .step-desc {
+            font-size: 11pt;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Keyframes Globales */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="subtitle">EDUMIN • Arquitectura de Sistemas</div>
+            <h1>Confirmación de Pago Inteligente</h1>
+        </div>
+
+        <div class="flow-container">
+            <svg width="700" height="150" viewBox="0 0 700 150">
+                <path class="data-line" d="M 170 75 L 315 75" stroke="#4a5568" stroke-width="3" fill="none" />
+                <path class="data-line" d="M 385 75 L 530 75" stroke="#4a5568" stroke-width="3" fill="none" />
+                
+                <circle cx="0" cy="75" r="4" fill="#fff" opacity="0">
+                    <animate attributeName="cx" values="170; 315" dur="1.5s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0; 1; 1; 0" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="0" cy="75" r="4" fill="#fff" opacity="0">
+                    <animate attributeName="cx" values="385; 530" dur="1.5s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0; 1; 1; 0" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+
+                <g class="pulse-mailhook">
+                    <circle class="node-circle" cx="135" cy="75" r="35" fill="#130b29" stroke="#b000ff" stroke-width="3" />
+                    <text x="135" y="80" font-family="'Outfit', sans-serif" font-weight="700" font-size="11" fill="#b000ff" text-anchor="middle" letter-spacing="1">MAILHOOK</text>
+                </g>
+                
+                <g class="pulse-sheets">
+                    <circle class="node-circle" cx="350" cy="75" r="35" fill="#062113" stroke="#00ff88" stroke-width="3" />
+                    <text x="350" y="80" font-family="'Outfit', sans-serif" font-weight="700" font-size="11" fill="#00ff88" text-anchor="middle" letter-spacing="1">SHEETS</text>
+                </g>
+                
+                <g class="pulse-telegram">
+                    <circle class="node-circle" cx="565" cy="75" r="35" fill="#071b29" stroke="#00f2ff" stroke-width="3" />
+                    <text x="565" y="80" font-family="'Outfit', sans-serif" font-weight="700" font-size="11" fill="#00f2ff" text-anchor="middle" letter-spacing="1">BOT</text>
+                </g>
+            </svg>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card card-1">
+                <div class="step-num">Trigger</div>
+                <div class="step-title">Recepción en Vivo</div>
+                <p class="step-desc">El Webhook personalizado intercepta instantáneamente la notificación de pago exitoso de la pasarela. Cero tiempos de espera.</p>
+            </div>
+
+            <div class="step-card card-2">
+                <div class="step-num">Lógica</div>
+                <div class="step-title">Filtro de Seguridad</div>
+                <p class="step-desc">El sistema audita el asunto del correo exigiendo la etiqueta <strong>"New customer"</strong>. Ignora el ruido y protege la base de datos.</p>
+            </div>
+
+            <div class="step-card card-3">
+                <div class="step-num">Data</div>
+                <div class="step-title">Registro en Skool</div>
+                <p class="step-desc">Generación automática de una nueva fila en el ecosistema de Sheets con la fecha exacta y los datos de contacto del alumno.</p>
+            </div>
+
+            <div class="step-card card-4">
+                <div class="step-num">Acción</div>
+                <div class="step-title">Alerta a Coordinación</div>
+                <p class="step-desc">Emisión de una notificación Push al canal de Telegram. El equipo visualiza el ingreso en su celular al segundo de ocurrir.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
