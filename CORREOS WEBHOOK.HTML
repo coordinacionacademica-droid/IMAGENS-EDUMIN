@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDUMIN - Ecosistema de Matrículas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap');
+
+        :root {
+            --bg-color: #03060a;
+            --neon-script: #fbbc05;
+            --neon-webhook: #ff0055;
+            --neon-router: #00ff88;
+            --neon-standard: #00aaff;
+            --neon-premium: #b000ff;
+            --neon-vip: #ffaa00;
+            --text-main: #ffffff;
+            --text-muted: #8b949e;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(rgba(255, 0, 85, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            color: var(--neon-router);
+            font-size: 14pt;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
+
+        h1 {
+            font-size: 32pt;
+            margin: 0;
+            font-weight: 900;
+            background: linear-gradient(90deg, #fff, #a1c4fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flow-container {
+            background: rgba(10, 15, 25, 0.8);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 24px;
+            padding: 40px 10px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(0, 255, 136, 0.05);
+            display: flex;
+            justify-content: center;
+            animation: scaleIn 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Animaciones SVG */
+        .data-line { stroke-dasharray: 6, 6; animation: flowData 1s linear infinite; }
+        @keyframes flowData { to { stroke-dashoffset: -12; } }
+
+        .node-circle { transition: all 0.3s ease; }
+        .node-circle:hover { filter: brightness(1.4) drop-shadow(0 0 15px currentColor); }
+
+        .pulse-sc { animation: p-sc 2s infinite alternate; }
+        .pulse-wh { animation: p-wh 2s infinite alternate 0.4s; }
+        .pulse-rt { animation: p-rt 2s infinite alternate 0.8s; }
+
+        @keyframes p-sc { 0% { filter: drop-shadow(0 0 5px var(--neon-script)); } 100% { filter: drop-shadow(0 0 20px var(--neon-script)); } }
+        @keyframes p-wh { 0% { filter: drop-shadow(0 0 5px var(--neon-webhook)); } 100% { filter: drop-shadow(0 0 20px var(--neon-webhook)); } }
+        @keyframes p-rt { 0% { filter: drop-shadow(0 0 5px var(--neon-router)); } 100% { filter: drop-shadow(0 0 25px var(--neon-router)); } }
+
+        /* Grid Inferior */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step-card {
+            background: linear-gradient(145deg, rgba(20, 25, 35, 0.9), rgba(10, 12, 18, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover { transform: translateY(-5px); border-color: rgba(255, 255, 255, 0.2); }
+        .step-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--card-color); box-shadow: 0 0 10px var(--card-color);
+        }
+
+        .card-1 { --card-color: var(--neon-script); animation: slideUp 0.5s ease forwards 0.2s; opacity: 0; }
+        .card-2 { --card-color: var(--neon-webhook); animation: slideUp 0.5s ease forwards 0.4s; opacity: 0; }
+        .card-3 { --card-color: var(--neon-router); animation: slideUp 0.5s ease forwards 0.6s; opacity: 0; }
+        .card-4 { --card-color: var(--neon-vip); animation: slideUp 0.5s ease forwards 0.8s; opacity: 0; }
+
+        .step-title { font-size: 14pt; font-weight: 700; margin-bottom: 10px; color: #fff; }
+        .step-desc { font-size: 10pt; color: var(--text-muted); line-height: 1.5; }
+
+        .badge-paquete {
+            display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 8pt; font-weight: bold; margin-right: 5px; color: #000;
+        }
+        .bg-std { background: var(--neon-standard); }
+        .bg-prm { background: var(--neon-premium); color: #fff;}
+        .bg-vip { background: var(--neon-vip); }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+        @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="subtitle">Ecosistema Académico - EDUMIN</div>
+            <h1>Automatización de Matrículas (IMPORTRANGE)</h1>
+        </div>
+
+        <div class="flow-container">
+            <svg width="950" height="320" viewBox="0 0 950 320">
+                <path class="data-line" d="M 120 160 L 220 160" stroke="#30363d" stroke-width="4" fill="none" />
+                <path class="data-line" d="M 290 160 L 390 160" stroke="#30363d" stroke-width="4" fill="none" />
+                
+                <path class="data-line" d="M 460 160 C 520 160, 520 50, 590 50" stroke="#30363d" stroke-width="3" fill="none" />
+                <path class="data-line" d="M 660 50 L 760 50" stroke="#30363d" stroke-width="3" fill="none" />
+                
+                <path class="data-line" d="M 460 160 L 590 160" stroke="#30363d" stroke-width="3" fill="none" />
+                <path class="data-line" d="M 660 160 L 760 160" stroke="#30363d" stroke-width="3" fill="none" />
+                
+                <path class="data-line" d="M 460 160 C 520 160, 520 270, 590 270" stroke="#30363d" stroke-width="3" fill="none" />
+                <path class="data-line" d="M 660 270 L 760 270" stroke="#30363d" stroke-width="3" fill="none" />
+
+                <g class="pulse-sc">
+                    <circle class="node-circle" cx="85" cy="160" r="35" fill="#1a1300" stroke="#fbbc05" stroke-width="3" />
+                    <text x="85" y="165" font-family="'Outfit', sans-serif" font-weight="900" font-size="10" fill="#fbbc05" text-anchor="middle">SCRIPT</text>
+                </g>
+
+                <g class="pulse-wh">
+                    <circle class="node-circle" cx="255" cy="160" r="35" fill="#1a000d" stroke="#ff0055" stroke-width="3" />
+                    <text x="255" y="165" font-family="'Outfit', sans-serif" font-weight="900" font-size="10" fill="#ff0055" text-anchor="middle">WEBHOOK</text>
+                </g>
+
+                <g class="pulse-rt">
+                    <circle class="node-circle" cx="425" cy="160" r="35" fill="#001a0d" stroke="#00ff88" stroke-width="4" />
+                    <text x="425" y="165" font-family="'Outfit', sans-serif" font-weight="900" font-size="10" fill="#00ff88" text-anchor="middle">ROUTER</text>
+                </g>
+
+                <g>
+                    <circle cx="625" cy="50" r="30" fill="#00111a" stroke="#00aaff" stroke-width="2" />
+                    <text x="625" y="54" font-family="'Outfit', sans-serif" font-weight="700" font-size="10" fill="#00aaff" text-anchor="middle">GMAIL</text>
+
+                    <circle cx="625" cy="160" r="30" fill="#1a001a" stroke="#b000ff" stroke-width="2" />
+                    <text x="625" y="164" font-family="'Outfit', sans-serif" font-weight="700" font-size="10" fill="#b000ff" text-anchor="middle">GMAIL</text>
+
+                    <circle cx="625" cy="270" r="30" fill="#1a1100" stroke="#ffaa00" stroke-width="2" />
+                    <text x="625" y="274" font-family="'Outfit', sans-serif" font-weight="700" font-size="10" fill="#ffaa00" text-anchor="middle">GMAIL</text>
+                </g>
+
+                <g>
+                    <circle cx="795" cy="50" r="30" fill="#00131a" stroke="#00aaff" stroke-width="2" opacity="0.7"/>
+                    <text x="795" y="54" font-family="'Outfit', sans-serif" font-weight="700" font-size="9" fill="#00aaff" text-anchor="middle">TG BOT</text>
+
+                    <circle cx="795" cy="160" r="30" fill="#00131a" stroke="#00aaff" stroke-width="2" opacity="0.7"/>
+                    <text x="795" y="164" font-family="'Outfit', sans-serif" font-weight="700" font-size="9" fill="#00aaff" text-anchor="middle">TG BOT</text>
+
+                    <circle cx="795" cy="270" r="30" fill="#00131a" stroke="#00aaff" stroke-width="2" opacity="0.7"/>
+                    <text x="795" y="274" font-family="'Outfit', sans-serif" font-weight="700" font-size="9" fill="#00aaff" text-anchor="middle">TG BOT</text>
+                </g>
+
+                <rect x="500" y="30" width="55" height="18" rx="4" fill="#00aaff" />
+                <text x="527.5" y="42" font-family="Arial" font-weight="bold" font-size="9" fill="#000" text-anchor="middle">STANDARD</text>
+                
+                <rect x="500" y="140" width="55" height="18" rx="4" fill="#b000ff" />
+                <text x="527.5" y="152" font-family="Arial" font-weight="bold" font-size="9" fill="#fff" text-anchor="middle">PREMIUM</text>
+                
+                <rect x="500" y="250" width="55" height="18" rx="4" fill="#ffaa00" />
+                <text x="527.5" y="262" font-family="Arial" font-weight="bold" font-size="9" fill="#000" text-anchor="middle">VIP</text>
+            </svg>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card card-1">
+                <div class="step-title">1. Cron Job & Script</div>
+                <p class="step-desc">El Apps Script se ejecuta cada minuto para leer los datos del área Comercial (IMPORTRANGE). Evita duplicados marcando filas como "ENVIADO".</p>
+            </div>
+            <div class="step-card card-2">
+                <div class="step-title">2. Disparo del Payload</div>
+                <p class="step-desc">Se inyecta un JSON al Webhook de Make con los datos vitales del alumno: Paquete, Nombre, DNI y Correo.</p>
+            </div>
+            <div class="step-card card-3">
+                <div class="step-title">3. Enrutamiento Lógico</div>
+                <p class="step-desc">El Router lee la variable "Paquete" y divide el flujo para aplicar la experiencia adecuada según la inversión del alumno.</p>
+            </div>
+            <div class="step-card card-4">
+                <div class="step-title">4. Despliegue de Valor</div>
+                <p class="step-desc">Se activan correos específicos: <br><br>
+                    <span class="badge-paquete bg-std">STD</span> <span class="badge-paquete bg-prm">PRM</span> <span class="badge-paquete bg-vip">VIP</span><br><br>
+                Finalizando con una alerta a Telegram marcando la fila como "ENVIADO".</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
