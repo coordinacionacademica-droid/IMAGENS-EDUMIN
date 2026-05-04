@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía de Áreas y Diplomados | EDUMIN</title>
+    <style>
+        /* Estilos Generales basados en la línea gráfica EDUMIN */
+        body {
+            margin: 0;
+            padding: 25px;
+            background-color: #f4f4f4;
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            background-image: url("https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/circle.svg");
+            background-repeat: repeat;
+            background-size: 25px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Cabecera */
+        .header {
+            background-color: #111111;
+            padding: 15px 25px;
+            text-align: right;
+        }
+
+        .header img {
+            height: 40px;
+            width: auto;
+        }
+
+        /* Contenido Principal */
+        .content {
+            padding: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #ff6600;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 15px;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: #ff6600;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #444;
+            line-height: 1.25;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Divisor con flechas */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .divider-line {
+            flex-grow: 1;
+            height: 1.5px;
+            background-color: #cccccc;
+        }
+
+        .divider img {
+            width: 25px;
+            height: 25px;
+            margin: 0 15px;
+        }
+
+        /* Tarjetas de Categorías */
+        .card {
+            background-color: #f8f9fa;
+            border-radius: 25px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .card-black { border-top: 6px solid #111111; }
+        .card-orange { border-top: 6px solid #ff6600; }
+
+        .card-title {
+            color: #111;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ESTILO DEL NÚMERO DIFERENCIADOR */
+        .number-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* El color del número coincide con el borde de la tarjeta */
+        .card-black .number-badge { background-color: #111111; }
+        .card-orange .number-badge { background-color: #ff6600; }
+
+        .diploma-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .diploma-list li {
+            font-size: 16px;
+            color: #444444;
+            line-height: 1.35;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .diploma-list li::before {
+            content: "•";
+            color: #ff6600;
+            font-weight: bold;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .diploma-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Pie de página */
+        .footer-image {
+            width: 100%;
+            display: block;
+            border-radius: 0 0 25px 25px;
+        }
+
+        /* Responsividad básica para móviles */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            h1 { font-size: 28px; }
+            .content { padding: 20px; }
+            .card { padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Cabecera -->
+        <div class="header">
+            <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/logo/logo%20blanco.png" alt="Logo EDUMIN" />
+        </div>
+
+        <div class="content">
+            <!-- Bienvenida -->
+            <div class="badge">Guía de Áreas</div>
+            
+            <h1>
+                Identifica tu <br />
+                <span>Especialidad.</span>
+            </h1>
+            
+            <p class="subtitle">
+                Ubica a qué área pertenece tu diplomado para poder dejar tu consulta o pregunta dirigida al docente en nuestro formulario.
+            </p>
+
+            <!-- Divisor -->
+            <div class="divider">
+                <div class="divider-line"></div>
+                <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/double_arrow_down.png" alt="v" />
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- Categoría 1 -->
+            <div class="card card-black">
+                <div class="card-title">
+                    <span class="number-badge">01</span>
+                    Logística y Cadena de Suministro
+                </div>
+                <ul class="diploma-list">
+                    <li>Gestión Logística y Almacenes en Minería</li>
+                    <li>Supply Chain Management en Industria y Minería</li>
+                    <li>Gestión Logística y Proveedores en la Industria y Minería</li>
+                    <li>Especialista en Comercio Internacional: Gestión Aduanera y Logística</li>
+                </ul>
+            </div>
+
+            <!-- Categoría 2 -->
+            <div class="card card-orange">
+                <div class="card-title">
+                    <span class="number-badge">02</span>
+                    Seguridad, Medio Ambiente y Calidad (HSEQ)
+                </div>
+                <ul class="diploma-list">
+                    <li>Seguridad y Salud Ocupacional en la Industria y Minería (4 Módulos)</li>
+                    <li>Seguridad Industrial</li>
+                    <li>Gestión Ambiental para el Sector Minero e Industrial</li>
+                    <li>Gerencia de Sistemas Integrados de Gestión HSEQ</li>
+                </ul>
+            </div>
+
+            <!-- Categoría 3 -->
+            <div class="card card-black">
+                <div class="card-title">
+                    <span class="number-badge">03</span>
+                    Geociencias y Especialidades Técnicas Mineras
+                </div>
+                <ul class="diploma-list">
+                    <li>Geometalurgia</li>
+                    <li>Geología Minera</li>
+                    <li>Geomecánica Subterránea y Superficial</li>
+                    <li>Geotecnia Minera</li>
+                </ul>
+            </div>
+
+            <!-- Categoría 4 -->
+            <div class="card card-orange">
+                <div class="card-title">
+                    <span class="number-badge">04</span>
+                    Gestión y Operaciones (Minería e Industria)
+                </div>
+                <ul class="diploma-list">
+                    <li>Gestión Minera</li>
+                    <li>Gestión de Control Operativo en Procesos Mineros</li>
+                    <li>Gestión de Operaciones Industriales</li>
+                </ul>
+            </div>
+
+            <!-- Categoría 5 -->
+            <div class="card card-black">
+                <div class="card-title">
+                    <span class="number-badge">05</span>
+                    Legal, Laboral y Relaciones Comunitarias
+                </div>
+                <ul class="diploma-list">
+                    <li>Derecho Minero</li>
+                    <li>Legislación Laboral y Elaboración de Planillas</li>
+                    <li>Prevención de la Conflictividad, Riesgos Sociales y Responsabilidad Social Minera</li>
+                </ul>
+            </div>
+
+            <!-- Categoría 6 -->
+            <div class="card card-orange">
+                <div class="card-title">
+                    <span class="number-badge">06</span>
+                    Tecnología, Digitalización e Innovación
+                </div>
+                <ul class="diploma-list">
+                    <li>Minería 4.0 y Digitalización Minera</li>
+                    <li>Gestión Estratégica para Empresas utilizando Big Data y Análisis Predictivo</li>
+                </ul>
+            </div>
+
+            <!-- Categoría 7 -->
+            <div class="card card-black">
+                <div class="card-title">
+                    <span class="number-badge">07</span>
+                    Gerencia Estratégica y Liderazgo
+                </div>
+                <ul class="diploma-list">
+                    <li>Gerencia Estratégica y Liderazgo de Equipos en la Minería</li>
+                </ul>
+            </div>
+
+            <!-- Divisor -->
+            <div class="divider">
+                <div class="divider-line"></div>
+                <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/double_arrow_down.png" alt="v" />
+                <div class="divider-line"></div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 15px;">
+                <p style="font-size: 16px; font-weight: 700; color: #444444; margin: 0; line-height: 1.25; font-style: italic;">
+                    ¡El futuro de la minería está en tus manos, nos entusiasma verte destacar!
+                </p>
+            </div>
+        </div>
+
+        <!-- Firma Footer -->
+        <img class="footer-image" src="https://videoconferenciasdiplomado-alt.github.io/imagenes/firmas/Firma%20-%20%C3%81rea%20Acad%C3%A9mica%20de%20EDUMIN.png" alt="Firma EDUMIN" />
+    </div>
+</body>
+</html>
