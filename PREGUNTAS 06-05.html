@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preguntas - Sesión en Vivo EDUMIN</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 25px;
+            background-color: #f4f4f4;
+            font-family: 'Trebuchet MS', sans-serif;
+            color: #333;
+        }
+
+        .main-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            background-image: url("https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/circle.svg");
+            background-repeat: repeat;
+            background-size: 25px 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-bar {
+            background-color: #111111;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .header-bar img {
+            height: 40px;
+            width: auto;
+        }
+
+        .content-area {
+            padding: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #ff6600;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .main-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 15px;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .main-title span {
+            color: #ff6600;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #444;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 40px;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Category Modules */
+        .module-section {
+            background-color: #f8f9fa;
+            border-top: 6px solid #111111;
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .module-section.accent-orange {
+            border-top: 6px solid #ff6600;
+        }
+
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .module-icon {
+            font-size: 32px;
+            margin-right: 15px;
+            background: #ffffff;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .module-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #111;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        /* Grid for horizontal layout */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .question-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px;
+            border: 2px solid #eaeaea;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-card:hover {
+            border-color: #ff6600;
+            box-shadow: 0 8px 20px rgba(255, 102, 0, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .question-number {
+            display: inline-block;
+            background-color: #111111;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .accent-orange .question-number {
+            background-color: #ff6600;
+        }
+
+        .question-text {
+            font-size: 18px;
+            color: #333333;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 10px 0 35px;
+        }
+        .divider img {
+            width: 25px;
+            height: 25px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .questions-grid {
+                grid-template-columns: 1fr;
+            }
+            .content-area {
+                padding: 25px;
+            }
+            .main-title {
+                font-size: 32px;
+            }
+            .question-text {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <!-- Top Bar EDUMIN -->
+        <div class="header-bar">
+            <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/logo/logo%20blanco.png" alt="logo EDUMIN" />
+        </div>
+
+        <div class="content-area">
+            <!-- Header Text -->
+            <div style="text-align: center;">
+                <span class="badge">🎙️ SESIÓN EN VIVO</span>
+                <h1 class="main-title">
+                    sesión de preguntas  y respuestas 06/05 <br />
+                    <span>temas:  <span>
+                       <span></span>seguridad, logística, gestión minera</span>
+
+                </h1>
+                <p class="subtitle">
+                    Dinámica de clase: Preguntas diseñadas para que nuestros alumnos conecten la teoría del diplomado con la verdadera experiencia de campo. 🚀
+                </p>
+            </div>
+
+            <!-- Arrow Divider -->
+            <div class="divider">
+                <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/double_arrow_down.png" alt="v" />
+            </div>
+
+            <!-- MODULE 1: SEGURIDAD -->
+            <div class="module-section accent-orange">
+                <div class="module-header">
+                    <div class="module-icon">🦺</div>
+                    <h2 class="module-title">Seguridad en Interior Mina</h2>
+                </div>
+                
+                <div class="questions-grid">
+                    <div class="question-card">
+                        <div class="question-number">1</div>
+                        <p class="question-text">Ingeniero, sabemos que en la teoría la seguridad es primero, pero en mina siempre hay mucha presión por avanzar ⏱️. ¿Cómo hace usted para frenar al equipo cuando hay riesgos, sin que se desmotiven o sientan que los retrasa?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">2</div>
+                        <p class="question-text">Para los que recién estamos empezando en campo 👷🏽‍♂️: ¿Cuáles son esos 3 "detalles invisibles" que su experiencia le ha enseñado a detectar a tiempo antes de que ocurra un accidente grave?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">3</div>
+                        <p class="question-text">Siempre escuchamos el mito de que la seguridad retrasa la producción 📉. Desde su visión como ingeniero industrial, ¿nos podría compartir un caso real donde hacer un proceso más seguro terminó haciéndolo más eficiente?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">4</div>
+                        <p class="question-text">Pensando en el famoso "cambio de turno" 🔄: ¿Cuál es el error de comunicación más común que ha visto generar incidentes, y qué nos recomienda para asegurar un buen traspaso de información?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 2: LOGÍSTICA -->
+            <div class="module-section">
+                <div class="module-header">
+                    <div class="module-icon">🚛</div>
+                    <h2 class="module-title">Logística y Suministros</h2>
+                </div>
+                
+                <div class="questions-grid">
+                    <div class="question-card">
+                        <div class="question-number">1</div>
+                        <p class="question-text">Profesor, si un proveedor crítico nos falla en un campamento remoto, se nos paraliza todo ⚠️. En ese momento de crisis, ¿qué le ha funcionado mejor: aplicar fríamente el contrato o manejarlo mediante la relación personal con el proveedor?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">2</div>
+                        <p class="question-text">Comparando la llegada de alimentos con la de repuestos críticos ⚙️: ¿Cuál de las dos logísticas genera más dolores de cabeza en una mina aislada y cómo evita usted quedarnos sin stock?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">3</div>
+                        <p class="question-text">En clases vimos mucha tecnología 💻, pero en la realidad del almacén de hoy, ¿cuál es esa herramienta digital del día a día que a usted realmente le "salva la vida" para no perder el control del inventario?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">4</div>
+                        <p class="question-text">Ingeniero, revisando contratos de terceros (como transporte o mantenimiento) 📝, ¿dónde suelen esconderse esos "gastos hormiga" o costos ocultos que a veces pasamos por alto y nos inflan el presupuesto?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 3: GESTIÓN MINERA -->
+            <div class="module-section accent-orange">
+                <div class="module-header">
+                    <div class="module-icon">📈</div>
+                    <h2 class="module-title">Gestión y Crecimiento</h2>
+                </div>
+                
+                <div class="questions-grid">
+                    <div class="question-card">
+                        <div class="question-number">1</div>
+                        <p class="question-text">Muchos aquí buscamos ascender con este diplomado 🎓. En una entrevista para jefatura, ¿cómo nos recomienda demostrar que sabemos resolver problemas reales de mina, más allá de solo mostrar el certificado?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">2</div>
+                        <p class="question-text">La tecnología avanza rapidísimo 🚀. ¿Cómo nos aconseja convencer al personal operativo de la "vieja escuela" de que estas nuevas herramientas son para ayudarlos y no una amenaza para su trabajo?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">3</div>
+                        <p class="question-text">Como ingeniero industrial siempre toca coordinar con todos 🤝. ¿Qué tácticas le han funcionado para lograr que Operaciones, Mantenimiento y Seguridad dejen de jalar cada uno para su lado y trabajen como un solo equipo?</p>
+                    </div>
+                    <div class="question-card">
+                        <div class="question-number">4</div>
+                        <p class="question-text">Pensando en nuestro desarrollo futuro 💡: Si usted volviera a ser un recién egresado hoy, ¿qué habilidad técnica o área específica de gestión nos recomendaría priorizar para ser más competitivos en los próximos años?</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
