@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evaluación IPERC - EDUMIN</title>
+    <style>
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 16px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #ff6600;
+        }
+        .radio-option {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #444444;
+            line-height: 1.3;
+            cursor: pointer;
+        }
+        .radio-option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+            accent-color: #ff6600;
+        }
+        button:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body
+    style="
+        margin: 0;
+        padding: 25px;
+        background-color: #f4f4f4;
+        font-family: Trebuchet MS, sans-serif;
+        color: #333;
+    ">
+    <table
+        width="100%"
+        cellpadding="0"
+        cellspacing="0"
+        border="0"
+        style="
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            background-image: url('https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/circle.svg');
+            background-repeat: repeat;
+            background-size: 25px 25px;
+        ">
+        <!-- HEADER LOGO -->
+        <tr>
+            <td style="background-color: #111111; padding: 15px 25px">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td align="right">
+                            <img
+                                src="https://videoconferenciasdiplomado-alt.github.io/imagenes/logo/logo%20blanco.png"
+                                alt="logo EDUMIN"
+                                style="height: 40px; width: auto" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <!-- TÍTULO Y DESCRIPCIÓN -->
+        <tr>
+            <td style="padding: 25px">
+                <div style="margin-bottom: 15px">
+                    <span
+                        style="
+                            display: inline-block;
+                            background-color: #ff6600;
+                            color: #ffffff;
+                            padding: 10px 20px;
+                            border-radius: 100px;
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 1;
+                        ">
+                        Evaluación Operativa
+                    </span>
+                </div>
+
+                <h1
+                    style="
+                        font-size: 36px;
+                        font-weight: 700;
+                        color: #111;
+                        margin: 0 0 15px;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        letter-spacing: -1px;
+                    ">
+                    IPERC CONTINUO:<br />
+                    TU ESCUDO DE <span style="color: #ff6600">VIDA.</span>
+                </h1>
+                <p style="font-size: 18px; color: #444; line-height: 1.25; margin-top: 0; margin-bottom: 15px">
+                    Comprueba tus conocimientos operativos. Al aprobar este módulo, tu <strong>credencial digital</strong> se emitirá automáticamente.
+                </p>
+
+                <!-- FORMULARIO INICIO -->
+                <form id="quizForm">
+                    
+                    <!-- DATOS PERSONALES -->
+                    <table
+                        width="100%"
+                        border="0"
+                        cellpadding="0"
+                        cellspacing="0"
+                        style="
+                            margin-bottom: 25px;
+                            background-color: #f8f9fa;
+                            border-top: 6px solid #111111;
+                            border-radius: 20px;
+                            overflow: hidden;
+                        ">
+                        <tr>
+                            <td style="padding: 20px; text-align: left">
+                                <div style="color: #111; font-weight: 700; font-size: 18px; margin-bottom: 15px;">
+                                    Tus Datos
+                                </div>
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: 700; color: #444; font-size: 14px;">Nombre Completo:</label>
+                                    <input type="text" id="nombre" class="input-field" required placeholder="Ej. Juan Pérez">
+                                </div>
+                                <div>
+                                    <label style="font-weight: 700; color: #444; font-size: 14px;">Correo Electrónico:</label>
+                                    <input type="email" id="correo" class="input-field" required placeholder="tu@correo.com">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- PREGUNTA 1 -->
+                    <table
+                        width="100%"
+                        border="0"
+                        cellpadding="0"
+                        cellspacing="0"
+                        style="
+                            margin-bottom: 20px;
+                            background-color: #f8f9fa;
+                            border-top: 4px solid #cccccc;
+                            border-radius: 20px;
+                            overflow: hidden;
+                        ">
+                        <tr>
+                            <td style="padding: 20px; text-align: left">
+                                <div style="color: #ff6600; font-weight: 700; font-size: 14px; margin-bottom: 5px;">PREGUNTA 1</div>
+                                <div style="font-size: 18px; font-weight: 700; color: #111; line-height: 1.25; margin-bottom: 15px;">
+                                    El cambio de condiciones
+                                </div>
+                                <p style="font-size: 16px; color: #444; margin-top: 0; margin-bottom: 15px;">Estás perforando en un frente y notas que filtra agua del techo. Tu IPERC inicial decía que era seguro. ¿Qué haces?</p>
+                                
+                                <label class="radio-option">
+                                    <input type="radio" name="p1" value="A" required> A) Continuar rápido para terminar antes de que debilite la roca.
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="p1" value="B"> B) Detener la tarea de inmediato, actualizar tu IPERC continuo y coordinar desquinche.
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="p1" value="C"> C) Ignorar la filtración porque el geólogo ya aprobó el plano.
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- PREGUNTA 2 -->
+                    <table
+                        width="100%"
+                        border="0"
+                        cellpadding="0"
+                        cellspacing="0"
+                        style="
+                            margin-bottom: 20px;
+                            background-color: #f8f9fa;
+                            border-top: 4px solid #cccccc;
+                            border-radius: 20px;
+                            overflow: hidden;
+                        ">
+                        <tr>
+                            <td style="padding: 20px; text-align: left">
+                                <div style="color: #ff6600; font-weight: 700; font-size: 14px; margin-bottom: 5px;">PREGUNTA 2</div>
+                                <div style="font-size: 18px; font-weight: 700; color: #111; line-height: 1.25; margin-bottom: 15px;">
+                                    Jerarquía de controles
+                                </div>
+                                <p style="font-size: 16px; color: #444; margin-top: 0; margin-bottom: 15px;">Identificas una roca agrietada que está por ceder sobre tu área de trabajo. ¿Cuál es el control correcto?</p>
+                                
+                                <label class="radio-option">
+                                    <input type="radio" name="p2" value="A" required> A) Trabajar rápido usando el casco bien ajustado.
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="p2" value="B"> B) Negativa al Trabajo y realizar desquinche desde una zona segura sostenida.
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="p2" value="C"> C) Colocar un cono reflectivo debajo y trabajar a un costado.
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- PREGUNTA 3 -->
+                    <table
+                        width="100%"
+                        border="0"
+                        cellpadding="0"
+                        cellspacing="0"
+                        style="
+                            margin-bottom: 25px;
+                            background-color: #f8f9fa;
+                            border-top: 4px solid #cccccc;
+                            border-radius: 20px;
+                            overflow: hidden;
+                        ">
+                        <tr>
+                            <td style="padding: 20px; text-align: left">
+                                <div style="color: #ff6600; font-weight: 700; font-size: 14px; margin-bottom: 5px;">PREGUNTA 3</div>
+                                <div style="font-size: 18px; font-weight: 700; color: #111; line-height: 1.25; margin-bottom: 15px;">
+                                    Tareas no rutinarias
+                                </div>
+                                <p style="font-size: 16px; color: #444; margin-top: 0; margin-bottom: 15px;">Tu supervisor te pide limpiar de emergencia un derrame de diésel (tarea no habitual). ¿Cómo procedes?</p>
+                                
+                                <label class="radio-option">
+                                    <input type="radio" name="p3" value="A" required> A) Ir inmediatamente a limpiar con lo que encuentre a la mano.
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="p3" value="B"> B) Elaborar IPERC específico, leer la hoja MSDS y usar EPP adecuado.
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="p3" value="C"> C) Negarme al trabajo porque solo estoy contratado para operar maquinaria.
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- BOTÓN ENVIAR -->
+                    <div style="text-align: center; width: 100%; margin-bottom: 25px;">
+                        <button
+                            type="submit"
+                            style="
+                                display: inline-block;
+                                background: linear-gradient(135deg, #ff6600 0%, #ff9933 100%);
+                                color: #ffffff;
+                                padding: 18px 30px;
+                                border: none;
+                                border-radius: 15px;
+                                font-weight: 700;
+                                font-size: 18px;
+                                line-height: 1;
+                                cursor: pointer;
+                                width: 100%;
+                                font-family: Trebuchet MS, sans-serif;
+                                box-shadow: 0 4px 6px rgba(255, 102, 0, 0.2);
+                            ">
+                            Enviar Evaluación
+                        </button>
+                    </div>
+                </form>
+                <!-- FORMULARIO FIN -->
+
+                <!-- MENSAJE DE ÉXITO OCULTO -->
+                <div id="mensajeExito" style="display:none; text-align: center; margin-bottom: 25px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #111; border-radius: 20px; padding: 30px;">
+                        <tr>
+                            <td align="center">
+                                <h2 style="color: #ff6600; margin-top: 0;">¡Datos enviados!</h2>
+                                <p style="color: #fff; font-size: 18px; margin-bottom: 0;">Estamos validando tus respuestas. Si aprobaste, recibirás tu credencial en breve a tu correo.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </td>
+        </tr>
+
+        <!-- FOOTER / CONTACTO -->
+        <tr>
+            <td style="padding: 0 25px 25px 25px">
+                <table
+                    width="100%"
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    style="
+                        background-color: #f8f9fa;
+                        border-top: 6px solid #111111;
+                        border-radius: 25px;
+                        overflow: hidden;
+                    ">
+                    <tr>
+                        <td style="padding: 25px 25px 0 25px">
+                            <div style="font-size: 16px; color: #444444; margin-bottom: 25px; text-align: left;">
+                                Si tienes problemas técnicos con la plataforma, nuestra área académica está para ayudarte:
+                            </div>
+
+                            <div style="text-align: center">
+                                <a href="mailto:area.academica@edumin.pe" style="text-decoration: none; display: inline-block; margin-bottom: 15px; width: 100%; max-width: 220px;">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="45" height="45" style="background-color: #111111; border-radius: 50%; margin: 0 auto 10px auto;">
+                                        <tr>
+                                            <td align="center" valign="middle" style="height: 45px; width: 45px">
+                                                <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/mail.png" alt="correo" style="width: 22px; display: block;" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="font-size: 16px; color: #444444; font-weight: 700;">Correo electrónico</div>
+                                    <div style="font-size: 14px; color: #444444;">area.academica@edumin.pe</div>
+                                </a>
+
+                                <a href="https://wa.me/51980694497" style="text-decoration: none; display: inline-block; width: 100%; max-width: 220px; margin-bottom: 25px;">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="45" height="45" style="background-color: #111111; border-radius: 50%; margin: 0 auto 10px auto;">
+                                        <tr>
+                                            <td align="center" valign="middle" style="height: 45px; width: 45px">
+                                                <img src="https://videoconferenciasdiplomado-alt.github.io/imagenes/svg/chat.png" alt="WhatsApp" style="width: 22px; display: block;" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div style="font-size: 16px; color: #444444; font-weight: 700;">WhatsApp</div>
+                                    <div style="font-size: 14px; color: #444444;">+51 980 694 497</div>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 0; line-height: 0">
+                <img
+                    src="https://videoconferenciasdiplomado-alt.github.io/imagenes/firmas/Firma%20-%20%C3%81rea%20Acad%C3%A9mica%20de%20EDUMIN.png"
+                    alt="Firma EDUMIN"
+                    style="width: 100%; display: block; border-radius: 0 0 25px 25px" />
+            </td>
+        </tr>
+    </table>
+
+    <!-- SCRIPT DE CONEXIÓN A N8N -->
+    <script>
+        document.getElementById("quizForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const datos = {
+                nombre: document.getElementById("nombre").value,
+                correo: document.getElementById("correo").value,
+                respuesta1: document.querySelector('input[name="p1"]:checked').value,
+                respuesta2: document.querySelector('input[name="p2"]:checked').value,
+                respuesta3: document.querySelector('input[name="p3"]:checked').value
+            };
+
+            // Aquí está tu URL exacta configurada
+            const WEBHOOK_URL = "https://n8n.gcg-corp.com/webhook/examen-iperc";
+
+            fetch(WEBHOOK_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById("quizForm").style.display = "none";
+                    document.getElementById("mensajeExito").style.display = "block";
+                } else {
+                    alert("Hubo un error al enviar tu evaluación.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Error de conexión. Revisa tu red.");
+            });
+        });
+    </script>
+</body>
+</html>
